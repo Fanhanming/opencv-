@@ -2,10 +2,10 @@ import cv2
 
 
 def get_image_info(image):
-    print(type(image))
-    print(image.shape)
-    print(image.size)
-    print(image.dtype)
+    print(type(image))  
+    print(image.shape)  ##(高度,宽度,像素通道)
+    print(image.size)   ##总的像素数据  = 高度 * 宽度 * 像素通道
+    print(image.dtype)  ##每个像素点有n个通道 每个通道所占的位数 uint8 无符号的int8位
 
 
 src = cv2.imread("C:\\Users\\Administrator\\Desktop\\1.jpg")
