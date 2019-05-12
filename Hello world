@@ -1,16 +1,30 @@
 import cv2
 
 
+def video_demo ():
+    capture = cv2.VideoCapture(0)##读取视频，参数为0时打开摄像头
+    while(True):
+        ret, frame = capture.read()##前面为返回值 后面为帧数
+        frame = cv2.flip(frame, 1)##flip镜像变换  上下变换为1 或 -1
+        cv2.imshow("video", frame)
+        c = cv2.waitKey(50)
+        if c == 27:
+            break
+
+
 def get_image_info(image):
-    print(type(image))  
+    print(type(image))  ##<class 'numpy.ndarray'> 类型为numpy模块中定义的n维数组
     print(image.shape)  ##(高度,宽度,像素通道)
     print(image.size)   ##总的像素数据  = 高度 * 宽度 * 像素通道
     print(image.dtype)  ##每个像素点有n个通道 每个通道所占的位数 uint8 无符号的int8位
+    pixel_data = np.array(image)##获取所有的像素数据
+    print(pixel_data)
 
 
 src = cv2.imread("C:\\Users\\Administrator\\Desktop\\1.jpg")
 cv2.namedWindow("input image",cv2.WINDOW_AUTOSIZE);
-cv2.imshow("input image",src);
-get_image_info(src)
+cv2.imshow("input image", src);
+cv2.imwrite("D:/2.jpg", src)##save功能
+video_demo ()
 cv2.waitKey(0);
 cv2.destroyAllWindows();
