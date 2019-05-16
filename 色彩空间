@@ -12,6 +12,9 @@ def extrace_object_demo():
         lower_hsv = np.array([37, 43, 46])
         upper_hsv = np.array([77, 255, 255])
         mask = cv.inRange(hsv, lowerb = lower_hsv, upperb= upper_hsv)
+        '''学习完像素运算回来添加的
+        dst = cv.bitwise_and(frame, frame, mask = mask)  # 此时操作之后视频中的圆盘又变成绿色的了
+        '''
         cv.imshow("Video", frame)
         cv.imshow(("mask", mask))
 # 将视频中的绿色提取出来
