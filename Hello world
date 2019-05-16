@@ -16,7 +16,7 @@ def get_image_info(image):
     print(type(image))  # <class 'numpy.ndarray'> 类型为numpy模块中定义的n维数组
     print(image.shape)  # (高度,宽度,像素通道)
     print(image.size)   # 总的像素数据  = 高度 * 宽度 * 像素通道
-    print(image.dtype)  # 每个像素点有n个通道 每个通道所占的位数 uint8 无符号的int8位
+    print(image.dtype)  # 每个像素点有n个通道 每个通道所占的位数 uint8 无符号的int8位 numpy.dtype用于自定义数据类型，实际是指导python程序存取内存数据时的解析方式。
     pixel_data = np.array(image)  # 获取所有的像素数据
     print(pixel_data)
 
