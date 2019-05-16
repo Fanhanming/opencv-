@@ -16,6 +16,18 @@ def access_pixels(image):
     print("height is %s, width is %s, channels is %s" % (height, width, channels))
 
 # 两种初始化数组的方式np.ones和np.zeros
+
+
+    def inverse(image):
+        dst = cv.bitwise_not(image)
+        cv.imshow("inverse demo",dst)
+'''cv.bitwise_not是一种API bitwise_not是对二进制数据进行“非”操作，
+即对图像（灰度图像或彩色图像均可）每个像素值进行二进制“非”操作，~1=0，~0=1
+使用该方法可以快速达到access_pixels()函数的效果
+'''
+
+
+
     def create_image():
         img = np.zeros([400, 400, 3], np.uint8)  # 初始化一个矩阵
         # img[:, :, 0] = np.ones([400, 400])*255  # 将矩阵变成蓝色
