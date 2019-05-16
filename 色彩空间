@@ -1,0 +1,50 @@
+import cv2 as cv
+import numpy as np
+
+#inRange的使用
+def extrace_object_demo():
+    capture = cv.VideoCapture("")
+    while(True):
+        ret, frame = capture.read()
+        if ret == False:
+            break
+        hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
+        lower_hsv = np.array([37, 43, 46])
+        upper_hsv = np.array([77, 255, 255])
+        mask = cv.inRange(hsv, lowerb = lower_hsv, upperb= upper_hsv)
+        cv.imshow("Video", frame)
+        cv.imshow(("mask", mask))
+# 将视频中的绿色提取出来
+
+
+def color_space_demo(image):
+    gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
+    cv.imshow("gray", gray)
+# cvCvtColor是Opencv里的颜色空间转换函数，可以实现RGB颜色向HSV，
+# HSI等颜色空间的转换，也可以转换为灰度图像，参数CV_RGB2GRAY是RGB到gray。
+    hsv = cv.cvtColor(image, cv.COLOR_BGR2HSV)
+    cv.imshow("hsv", hsv)
+    yuv = cv.cvtColor(image, cv.COLOR_BGR2YUV)
+    cv.imshow("yuv", yuv)
+    ycrcb = cv.cvtColor(image, cv.COLOR_BGR2YCrCb)
+    cv.imshow("ycrcb", ycrcb)
+
+
+src = cv.imread("C:/Users/Administrator/Desktop/1.jpg")
+cv.namedWindow("input image", cv.WINDOW_AUTOSIZE)
+cv.imshow("input image", src)
+# color_space_demo(src)
+# 通道的分离与合并
+b, g, r = cv.split(src)
+cv.imshow("blue", b)
+cv.imshow("green", g)
+cv.imshow("red", r)
+
+# 通道合并
+src[:, :, 2] = 0
+src = cv.merge([b, g, r])  # 最多两个参数传数组进去
+cv.imshow("merge", src)
+
+cv.waitKey(0)
+
+cv.destroyAllWindows()
