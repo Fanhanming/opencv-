@@ -16,6 +16,8 @@ def access_pixels(image):
     print("height is %s, width is %s, channels is %s" % (height, width, channels))
 
 # 两种初始化数组的方式np.ones和np.zeros
+    m3 = np.array[[2,3,4],[4,5,6],[7,8,9],np.int32]
+# 另一种定义二维数组的方法
 
 
     def inverse(image):
