@@ -1,0 +1,33 @@
+# 模糊操作 均值模糊 中值模糊 自定义模糊 意义与应用场景
+# 基本原理  1基于离散卷积 2定义好每个卷积核 3不同卷积核得到不同的卷积效果 4模糊是卷积的一种表象
+import cv2 as cv
+import numpy as np
+
+
+# 均值模糊 用来去噪声
+def blur_demo(image):
+    dst = cv.blur(image, (15, 1))
+    cv.imshow("blur_demo", dst)
+
+
+# 中值模糊 用来去椒盐噪声
+def median_blur_demo(image):
+    dst = cv.medianBlur(image, 5)
+    cv.imshow("blur_demo", dst)
+
+
+def custom_blur_demo(image):
+    # kernel = np.ones([5, 5], np.float32)/25
+    kernel = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]], np.float32)
+    dst = cv.filter2D(image, -1, kernel=kernel)
+    cv.imshow("custom_blur_demo", dst)
+# src:输入的图像 kernel自定义的卷积核算法 dst输出的结果 anchor锚点(一般在中心) borderType对边缘的填充模式
+
+
+src = cv.imread("C:/Users/Administrator/Desktop/3.jpg")
+cv.namedWindow("input image", cv.WINDOW_AUTOSIZE)
+cv.imshow("input image", src)
+custom_blur_demo(src)
+cv.waitKey(0)
+
+cv.destroyAllWindows()
